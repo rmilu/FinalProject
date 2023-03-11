@@ -103,7 +103,7 @@ public class StepDefinitions {
 
     @Then("Enrollment page opens")
     public void enrolementPageOpens(){
-        Assert.assertEquals("Sign up for the Software Testing course", "Sign up for the Software Testing course");
+        Assert.assertEquals(mainPage.softwareTester(), "Software Testing");
     }
 
     @When("Go in the end of the page")
@@ -120,6 +120,15 @@ public class StepDefinitions {
         driver.get("file:///C:/Users/milur/Desktop/New%20folder/Testing-Env/index.html");
     }
 
+    @When("Click on \"What You'll Learn\"")
+    public void whatYouLearnClick() {
+        mainPage.clickWhatYouLearn();
+    }
+
+    @Then("I am sent to Learn the Fundamentals")
+    public void learnTheFundamentals() {
+        Assert.assertEquals(mainPage.whatYouLearn(), "Learn The Fundamentals");
+    }
     @After
     public void cleanUp() {
         driver.quit();
