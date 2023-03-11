@@ -47,6 +47,15 @@ public class MainPage {
     @FindBy(xpath = "/html/body/footer/div/a/i")
     private WebElement upButton;
 
+    @FindBy(xpath = "/html/body/nav/div/div/ul/li[1]/a")
+    private WebElement whatYouLearn;
+
+    @FindBy(xpath = "/html/body/div/div/h2/span")
+    private WebElement softwareTester;
+
+    @FindBy(xpath = "/html/body/section[4]/div/div/div[2]/h2")
+    private WebElement learnTheFundamentals;
+
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -88,6 +97,18 @@ public class MainPage {
 
     public void clickUpButton() {
         this.upButton.click();
+    }
+
+    public void clickWhatYouLearn() {
+        this.whatYouLearn.click();
+    }
+
+    public String whatYouLearn() {
+        return this.learnTheFundamentals.getText();
+    }
+
+    public String softwareTester() {
+        return this.softwareTester.getText();
     }
     public WebElement getEmailField() {
         return this.emailField;

@@ -59,3 +59,12 @@ Feature: An example
     When Go in the end of the page
     And Click on the "up" icon
     Then I am sent at the beginning of the page
+
+  Scenario: Positive #11
+    Given I am on the main page
+    When Click on "What You'll Learn"
+    Then I am sent to Learn the Fundamentals
+
+  Scenario: Positive #12
+    Given I am on the main page
+    When Click on "
