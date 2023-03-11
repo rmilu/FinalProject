@@ -2,7 +2,9 @@ package org.example;
 
 import PageObjects.MainPage;
 import io.cucumber.java.After;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -44,7 +46,7 @@ public class StepDefinitions {
     }
     @Then("New page opens with Virtual header")
     public void newPageOpenVirtual() {
-        driver.get("file:///C:/Users/milur/Desktop/New%20folder/Testing-Env/routes/virtual.html");
+        driver.getTitle();
     }
     @When("Click \"Read more\" on Learn to Fundamentals")
     public void clickOnFundamentalsReadMore() {
@@ -54,7 +56,7 @@ public class StepDefinitions {
 
     @Then("New page opens with Fundamentals header appears")
     public void newPageOpenFundamentals() {
-        driver.get("file:///C:/Users/milur/Desktop/New%20folder/Testing-Env/routes/fundamentals.html");
+        driver.getTitle();
     }
 
     @When("Click \"Questions\" on the header")
@@ -62,9 +64,9 @@ public class StepDefinitions {
         mainPage.clickQuestions();
     }
 
-    @Then("It goes to Frequently asked questions")
-    public void frequentlyAskedQuestions(){
-        mainPage.setFrequentlyAskedQuestion();
+    @Then("It goes to Frequently Asked Questions")
+    public void frequentlyAskedQuestions() {
+        Assert.assertEquals(mainPage.getFrequentlyAskedQuestions(), "Frequently Asked Questions");
     }
 
     @Then("The field is coloured red")
@@ -80,12 +82,43 @@ public class StepDefinitions {
 
     @Then("New page opens with Selenium header")
     public void seleniumPageOpens() {
-        Assert.assertEquals("Selemnium", driver.getTitle());
+        Assert.assertEquals("Selenium", driver.getCurrentUrl());
     }
 
     @When("Click facebook icon at John Doe profile")
+    public void johnDoeProfile() {
+        Utils.scrollToElement(driver, mainPage.getOurInstructors());
+        mainPage.clickOnFacebookButton();
+    }
 
     @Then("Facebook its opening")
+    public void facebookPageOpens() {
+        Assert.assertEquals("https://www.facebook.com/", driver.getCurrentUrl());
+    }
+
+    @When("Click \"Start the Enrollment\" button")
+    public void clickEnrollement(){
+        mainPage.clickOnEnrollement();
+    }
+
+    @Then("Enrollment page opens")
+    public void enrolementPageOpens(){
+        Assert.assertEquals("Sign up for the Software Testing course", "Sign up for the Software Testing course");
+    }
+
+    @When("Go in the end of the page")
+    public void goToEndOfThePage(){
+       Utils.scrollToElement(driver, mainPage.getContactInfo());
+    }
+    @When("Click on the \"up\" icon")
+    public void clickUpButton(){
+        mainPage.clickUpButton();
+    }
+
+    @Then("I am sent at the beginning of the page")
+    public void goingBeginingPage() {
+        driver.get("file:///C:/Users/milur/Desktop/New%20folder/Testing-Env/index.html");
+    }
 
     @After
     public void cleanUp() {

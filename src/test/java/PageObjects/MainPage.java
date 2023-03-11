@@ -32,20 +32,35 @@ public class MainPage {
     @FindBy(xpath = "/html/body/section[6]/div/h2")
     private WebElement frequentlyAskedQuestions;
 
+    @FindBy(xpath = "/html/body/section[7]/div/h2")
+    private WebElement ourInstructors;
 
+    @FindBy(xpath = "/html/body/section[7]/div/div/div[1]/div/div/a[2]")
+    private WebElement facebookButton;
 
+    @FindBy(xpath = "/html/body/section[1]/div/div/div/a")
+    private WebElement enrolementButton;
+
+    @FindBy(xpath = "/html/body/section[8]/div/div/div[1]/h2")
+    private WebElement contactInfo;
+
+    @FindBy(xpath = "/html/body/footer/div/a/i")
+    private WebElement upButton;
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public void setFrequentlyAskedQuestion() {
-        this.frequentlyAskedQuestions.click();
+    public String getFrequentlyAskedQuestions(){
+        return this.frequentlyAskedQuestions.getText();
     }
     public void clickOnSubmitButton() {
         this.submitButton.click();
     }
 
+    public void clickOnFacebookButton() {
+        this.facebookButton.click();
+    }
     public void clickOnReadMoreSelenium() {
         this.seleniumReadMore.click();
     }
@@ -64,7 +79,16 @@ public class MainPage {
     public void writeEmailToEmailField(String email){
         this.emailField.sendKeys(email);
     }
+    public void setFrequentlyAskedQuestions() {
+        this.getFrequentlyAskedQuestions();
+    }
+    public void clickOnEnrollement() {
+        this.enrolementButton.click();
+    }
 
+    public void clickUpButton() {
+        this.upButton.click();
+    }
     public WebElement getEmailField() {
         return this.emailField;
     }
@@ -72,4 +96,12 @@ public class MainPage {
     public WebElement getImageCss() {
         return this.imageSelenium;
     }
+
+    public WebElement getOurInstructors() {
+        return this.ourInstructors;
+    }
+    public WebElement getContactInfo(){
+        return this.contactInfo;
+    }
+
 }

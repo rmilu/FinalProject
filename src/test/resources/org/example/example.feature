@@ -31,7 +31,7 @@ Feature: An example
   Scenario: Positive #5
     Given I am on the main page
     When Click "Questions" on the header
-    Given It goes to Frequently asked questions
+    Given It goes to Frequently Asked Questions
 
   Scenario: Positive #6
     Given I am on the main page
@@ -51,8 +51,8 @@ Feature: An example
 
   Scenario: Positive #9
     Given I am on the main page
-    When Click "Start the Enrolement" button
-    Then Enrolement page opens
+    When Click "Start the Enrollment" button
+    Then Enrollment page opens
 
   Scenario: Positive #10
     Given I am on the main page
