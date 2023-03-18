@@ -146,3 +146,4 @@ Feature: An example
     And I write the CVC "737"
     And I click on the next button
     Then A new page opens with information that the registration was successful
+
