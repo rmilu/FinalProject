@@ -65,6 +65,22 @@ Feature: An example
     When Click on "What You'll Learn"
     Then I am sent to Learn the Fundamentals
 
-  Scenario: Positive #12
-    Given I am on the main page
-    When Click on "
+  Scenario: Negative #12
+    Given I am on the enrollment page
+    When I write the First Name of "asda"
+    And I write the Last Name of "bla"
+    And I write username of "werueroq"
+    And I write password of "qwqedsa"
+    And I write confirm password of "ewrw"
+    And Click on next button
+    Then Because wrong credentials were inserted, I will remain on Personal Information page.
+
+  Scenario: Positive #13
+    Given I am on the enrollment page
+    When I write the First Name of "Johnny"
+    And I write the Last Name of "Bravo"
+    And I write username of "jbravo"
+    And I write password of "JohnBonJovi"
+    And I write confirm password of "JohnBonJovi"
+    And Click on next button
+    Then Contact Information page is opening

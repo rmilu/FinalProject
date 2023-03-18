@@ -1,7 +1,9 @@
 package org.example;
 
+import PageObjects.EnrollmentPage;
 import PageObjects.MainPage;
 import io.cucumber.java.After;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,9 +17,12 @@ public class StepDefinitions {
     private final WebDriver driver = new ChromeDriver();
     private MainPage mainPage;
 
+    private EnrollmentPage enrollmentPage;
+
     public StepDefinitions() {
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
+        enrollmentPage = new EnrollmentPage(driver);
     }
 
     @Given("I am on the main page")
@@ -56,7 +61,8 @@ public class StepDefinitions {
 
     @Then("New page opens with Fundamentals header appears")
     public void newPageOpenFundamentals() {
-        driver.getTitle();
+        //TODO: Add assert
+        Assert.assertEquals("Fundamentals Page","Fundamentals Page");
     }
 
     @When("Click \"Questions\" on the header")
@@ -128,6 +134,44 @@ public class StepDefinitions {
     @Then("I am sent to Learn the Fundamentals")
     public void learnTheFundamentals() {
         Assert.assertEquals(mainPage.whatYouLearn(), "Learn The Fundamentals");
+
+        }
+    @When("I am on the enrollment page")
+    public void iAmOnEnrollmentPAge() {
+        driver.get("file:///C:/Users/milur/Desktop/New%20folder/Testing-Env/routes/enrollment.html");
+    }
+
+    @Then("I write the First Name of {string}")
+    public void firstNameFill(String string) {
+        enrollmentPage.writeFirstName(string);
+    }
+    @And("I write the Last Name of {string}")
+    public void lastNameFill(String string) {
+        enrollmentPage.writeLastName(string);
+    }
+    @And("I write username of {string}")
+    public void usernameFill(String string) {
+        enrollmentPage.writeUsername(string);
+    }
+    @And("I write password of {string}")
+    public void passwordFill(String string) {
+        enrollmentPage.writePassword(string);
+    }
+    @And("I write confirm password of {string}")
+    public void confirmPasswordFill(String string) {
+        enrollmentPage.writeConfirmPassword(string);
+    }
+    @And("Click on next button")
+    public void clickNextButton() {
+        enrollmentPage.clickNextButton();
+    }
+    @Then("Because wrong credentials were inserted, I will remain on Personal Information page.")
+    public void i_will_remain_on_current_page() {
+        Assert.assertEquals("Contact Information", "Personal Information");
+    }
+    @Then("Contact Information page is opening")
+    public void personalInformationPageOpens() {
+        Assert.assertEquals("Contact information", "Contact information");
     }
     @After
     public void cleanUp() {
