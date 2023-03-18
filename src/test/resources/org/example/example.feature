@@ -147,3 +147,8 @@ Feature: An example
     And I click on the next button
     Then A new page opens with information that the registration was successful
 
+  Scenario: Positive #21
+    Given I am on the enrollment page
+    When Click on then next button
+    Then An error appears
+
