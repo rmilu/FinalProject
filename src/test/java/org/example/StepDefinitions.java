@@ -173,6 +173,87 @@ public class StepDefinitions {
     public void personalInformationPageOpens() {
         Assert.assertEquals("Contact information", "Contact information");
     }
+    @When("Click twitter icon at Jane Doe profile")
+        public void janeDoeProfile() {
+        Utils.scrollToElement(driver, mainPage.getOurInstructors());
+        mainPage.clickOnTwitterButton();
+    }
+    @Then("Twitter its opening")
+        public void twitterPageOpens() {
+        Assert.assertEquals("https://twitter.com/", driver.getCurrentUrl());
+    }
+    @When("Click linkedin icon at Steve Smith profile")
+        public void steveSmithProfile() {
+        Utils.scrollToElement(driver, mainPage.getOurInstructors());
+        mainPage.clickOnLinkedinButton();
+    }
+    @Then("Linkedin its opening")
+        public  void linkedinPagOpens() {
+        Assert.assertEquals("https://www.linkedin.com/", driver.getCurrentUrl());
+    }
+    @When("Click instagram icon at Sara Smith profile")
+        public void saraSmithProfile() {
+        Utils.scrollToElement(driver, mainPage.getOurInstructors());
+        mainPage.clickOnInstagramButton();
+    }
+    @Then("Instagram its opening")
+        public void instagramPageOpens() {
+        Assert.assertEquals("https://www.instagram.com/", driver.getCurrentUrl());
+    }
+    @When("Click \"Instructors\" on the header")
+        public void clickOnOurInstructors() {
+        mainPage.clickonOurInstructorsButton();
+    }
+    @Then("It goes to Our Instructors")
+        public void sentToOurInstructors() {
+        Assert.assertEquals("Our Instructors", "Our Instructors");
+    }
+    @And("Click on first question")
+        public void clickOnTheFirstButton() {
+        mainPage.clickOnTheFirstQuestion();
+    }
+    @And("Click on second question")
+        public void clickOnTheSecondButton() {
+        mainPage.clickOnTheSecondQuestion();
+    }
+    @And("Click on third question")
+        public void clickOnTheThirdButton() {
+        mainPage.clickOnTheThirdQuestion();
+    }
+    @And("Click on forth question")
+        public void clickOnTheForthButton() {
+        mainPage.clickOnTheForthQuestion();
+    }
+    @And("Click on fifth question")
+        public void clickOnTheFifthButton() {
+        mainPage.clickOnTheFifthQuestion();
+    }
+    @Then("More information are revealed")
+        public void informationIsRevealed() {
+        Assert.assertEquals("Lorem ipsum dolor", "Lorem ipsum dolor");
+    }
+    @When("Click \"Read more\" on Hybrid")
+        public void clickOnReadMoreHybridButton() {
+        Utils.scrollToElement(driver, mainPage.getEmailField());
+        mainPage.clickOnTheReadMoreHybrid();
+    }
+    @Then("New page opens with Hybrid header")
+        public void newHybridOpens() {
+        Assert.assertEquals("Hybrid", "Hybrid");
+    }
+    @When("Click \"Read more\" on In Person")
+        public void clickOnInPersonButton() {
+        Utils.scrollToElement(driver, mainPage.getEmailField());
+        mainPage.clickOnTheInPerson();
+    }
+    @Then("New page opens with In Person header")
+        public void newInPersonOpens() {
+        Assert.assertEquals("In Person", "In Person");
+    }
+    @Then("An error appears")
+        public void errorAppears() {
+        Assert.assertTrue(enrollmentPage.getErrorMessage().getAttribute("class").contains("error"));
+    }
     @After
     public void cleanUp() {
         driver.quit();

@@ -32,6 +32,8 @@ private WebElement softwareTesting;
 
 @FindBy(xpath = "/html/body/div/div/section/div/form/div[2]/h3")
 private WebElement contactInformation;
+@FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/div[1]/div")
+private WebElement errorMessage;
 
 public void writeFirstName(String name) {
     this.firstName.sendKeys(name);
@@ -50,6 +52,9 @@ public void writeConfirmPassword(String confirmPassword) {
 }
 public void clickNextButton() {
     this.nextButton.click();
+}
+public WebElement getErrorMessage() {
+    return this.errorMessage;
 }
 
 }

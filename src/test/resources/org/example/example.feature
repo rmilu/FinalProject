@@ -114,19 +114,24 @@ Feature: An example
     And Click on third question
     And Click on forth question
     And Click on fifth question
-    Then Each of the questions colapse and reveal the answer
+    Then More information are revealed
 
-  Scenario: Positive #18
+  Scenario: Positive #19
     Given I am on the main page
     When Click "Read more" on Hybrid
     Then New page opens with Hybrid header
 
-  Scenario: Positive #19
+  Scenario: Positive #20
     Given I am on the main page
     When Click "Read more" on In Person
     Then New page opens with In Person header
 
-  Scenario: Negative #20
+  Scenario: Positive #21
+    Given I am on the enrollment page
+    When Click on next button
+    Then An error appears
+
+  Scenario: Positive #22
     Given I am on the enrollment page
     When I write the First Name of "Johnny"
     And I write the Last Name of "Bravo"
@@ -140,15 +145,13 @@ Feature: An example
     And I write the City of "Brasov"
     And I write the Post Code of "500152"
     And Click on next button bellow
+    And Select Software Testing - Manual tester certificate
     And I Click on next button
     And I write the Card holder name "Johnny Bravo"
     And I write the Card number "4123-2020-2020-1292"
     And I write the CVC "737"
+    And Select Month June
+    And Select Year 2027
     And I click on the next button
     Then A new page opens with information that the registration was successful
-
-  Scenario: Positive #21
-    Given I am on the enrollment page
-    When Click on then next button
-    Then An error appears
 

@@ -114,19 +114,24 @@ Feature: An example
     And Click on third question
     And Click on forth question
     And Click on fifth question
-    Then Each of the questions colapse and reveal the answer
+    Then More information are revealed
 
-  Scenario: Positive #18
+  Scenario: Positive #19
     Given I am on the main page
     When Click "Read more" on Hybrid
     Then New page opens with Hybrid header
 
-  Scenario: Positive #19
+  Scenario: Positive #20
     Given I am on the main page
     When Click "Read more" on In Person
     Then New page opens with In Person header
 
-  Scenario: Negative #20
+  Scenario: Positive #21
+    Given I am on the enrollment page
+    When Click on next button
+    Then An error appears
+
+  Scenario: Positive #22
     Given I am on the enrollment page
     When I write the First Name of "Johnny"
     And I write the Last Name of "Bravo"
