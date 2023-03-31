@@ -145,10 +145,13 @@ Feature: An example
     And I write the City of "Brasov"
     And I write the Post Code of "500152"
     And Click on next button bellow
+    And Select Software Testing - Manual tester certificate
     And I Click on next button
     And I write the Card holder name "Johnny Bravo"
     And I write the Card number "4123-2020-2020-1292"
     And I write the CVC "737"
+    And Select Month June
+    And Select Year 2027
     And I click on the next button
     Then A new page opens with information that the registration was successful
 

@@ -1,14 +1,18 @@
 package org.example;
 
+import PageObjects.ContactInformation;
 import PageObjects.EnrollmentPage;
 import PageObjects.MainPage;
+import PageObjects.PaymentInformation;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 
@@ -19,10 +23,16 @@ public class StepDefinitions {
 
     private EnrollmentPage enrollmentPage;
 
+    private ContactInformation contactInformation;
+
+    private PaymentInformation paymentInformation;
+
     public StepDefinitions() {
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
         enrollmentPage = new EnrollmentPage(driver);
+        contactInformation = new ContactInformation(driver);
+        paymentInformation = new PaymentInformation(driver);
     }
 
     @Given("I am on the main page")
@@ -253,6 +263,71 @@ public class StepDefinitions {
     @Then("An error appears")
         public void errorAppears() {
         Assert.assertTrue(enrollmentPage.getErrorMessage().getAttribute("class").contains("error"));
+    }
+    @And("I write the Email of {string}")
+        public void writeEmailAdress(String string) {
+        contactInformation.writeEmailField(string);
+    }
+
+    @And("I write the Phone of {string}")
+        public void writePhoneNumber(String string) {
+        contactInformation.writePhoneNumber(string);
+    }
+    @And("I write the Country of {string}")
+        public void writeCountry(String string) {
+        contactInformation.writeCountry(string);
+    }
+    @And("I write the City of {string}")
+        public void writeCity(String string) {
+        contactInformation.writeCounty(string);
+    }
+    @And("I write the Post Code of {string}")
+    public void writePostCode(String string) {
+        contactInformation.writePostCode(string);
+    }
+    @And("Click on next button bellow")
+    public void clickNext() {
+        contactInformation.clickNextButton();
+    }
+    @And("Select Software Testing - Manual tester certificate")
+    public void clickCourseOption() {
+        contactInformation.clickCourseOption();
+    }
+    @And("I Click on next button")
+    public void clickOnTheNextButton() {
+        contactInformation.clickCourseOptionNextButton();
+    }
+    @And("I write the Card holder name {string}")
+    public void writeCardHolderName(String string) {
+        paymentInformation.writeCardHolderName(string);
+    }
+    @And("I write the Card number {string}")
+    public void writeCardNumber(String string) {
+        paymentInformation.writeCardNumber(string);
+    }
+    @And("I write the CVC {string}")
+    public void writeCVC(String string) {
+        paymentInformation.writeCVC(string);
+    }
+    @And("Select Month June")
+    public void selectMonth() {
+        paymentInformation.clickMonth();
+        Select dropdown = new Select(driver.findElement(By.xpath("//*[@id=\"month\"]")));
+        dropdown.selectByIndex(6);
+    }
+    @And("Select Year 2027")
+    public void selectYear() {
+        paymentInformation.clickYear();
+        Select dropdown = new Select(driver.findElement(By.xpath("//*[@id=\"year\"]")));
+        dropdown.selectByVisibleText(String.valueOf(2027));
+    }
+    @And("I click on the next button")
+    public void selectNext() {
+        paymentInformation.clickNext();
+    }
+    @Then("A new page opens with information that the registration was successful")
+    public void itsSuccess() {
+        Assert.assertEquals(enrollmentPage.itsSuccess(), "Success!");
     }
     @After
     public void cleanUp() {

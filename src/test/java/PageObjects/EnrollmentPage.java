@@ -34,6 +34,8 @@ private WebElement softwareTesting;
 private WebElement contactInformation;
 @FindBy(xpath = "/html/body/div/div/section/div/form/div[1]/div[1]/div")
 private WebElement errorMessage;
+@FindBy(xpath = "/html/body/div/div/section/div/form/div[5]/h3")
+private WebElement success;
 
 public void writeFirstName(String name) {
     this.firstName.sendKeys(name);
@@ -55,6 +57,9 @@ public void clickNextButton() {
 }
 public WebElement getErrorMessage() {
     return this.errorMessage;
+}
+public String itsSuccess() {
+    return this.success.getText();
 }
 
 }
