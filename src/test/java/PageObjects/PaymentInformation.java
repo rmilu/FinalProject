@@ -22,6 +22,8 @@ private WebElement month;
 private WebElement year;
 @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/div[4]/button[2]")
 private WebElement next;
+@FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/div[4]/div/div[1]/label")
+private WebElement expiryDate;
 public void writeCardHolderName(String cardHolder) {
     this.cardHolderName.sendKeys(cardHolder);
 }
@@ -39,5 +41,8 @@ public void clickYear() {
 }
 public void clickNext() {
     this.next.click();
+}
+public void clickExpiryDate() {
+    this.expiryDate.click();
 }
 }

@@ -173,10 +173,12 @@ public class StepDefinitions {
     }
     @And("Click on next button")
     public void clickNextButton() {
+        Utils.waitForElementToLoad(2);
         enrollmentPage.clickNextButton();
     }
     @Then("Because wrong credentials were inserted, I will remain on Personal Information page.")
     public void i_will_remain_on_current_page() {
+        Utils.waitForElementToLoad(2);
         Assert.assertEquals("Contact Information", "Personal Information");
     }
     @Then("Contact Information page is opening")
@@ -287,6 +289,7 @@ public class StepDefinitions {
     }
     @And("Click on next button bellow")
     public void clickNext() {
+        Utils.waitForElementToLoad(2);
         contactInformation.clickNextButton();
     }
     @And("Select Software Testing - Manual tester certificate")
@@ -295,6 +298,7 @@ public class StepDefinitions {
     }
     @And("I Click on next button")
     public void clickOnTheNextButton() {
+        Utils.waitForElementToLoad(2);
         contactInformation.clickCourseOptionNextButton();
     }
     @And("I write the Card holder name {string}")
@@ -320,13 +324,16 @@ public class StepDefinitions {
         paymentInformation.clickYear();
         Select dropdown = new Select(driver.findElement(By.xpath("//*[@id=\"year\"]")));
         dropdown.selectByVisibleText(String.valueOf(2027));
+        paymentInformation.clickExpiryDate();
     }
     @And("I click on the next button")
     public void selectNext() {
+        Utils.waitForElementToLoad(2);
         paymentInformation.clickNext();
     }
     @Then("A new page opens with information that the registration was successful")
     public void itsSuccess() {
+        Utils.waitForElementToLoad(2);
         Assert.assertEquals(enrollmentPage.itsSuccess(), "Success!");
     }
     @After
